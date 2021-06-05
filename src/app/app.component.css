@@ -1,3 +1,53 @@
-p {
-  font-family: Lato;
+.master {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.base {
+  width: 100%;
+  height: 32px;
+  /*background: url('../assets/logo.png') no-repeat;*/
+  background-position: center;
+}
+
+.menu {
+  background-color: #2f374b;
+  width: 210px;
+}
+
+.menu ul li {
+  display: flex;
+  height: 40px;
+  padding: 3px;
+  margin-top: 1px;
+  background-color: #47526b;
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  vertical-align: center;
+  cursor: pointer;
+
+  background: linear-gradient(to right, #47526b 50%, #fff 50%) left;
+  background-size: 200%;
+  transition: .5s ease-out;
+}
+
+.menu ul li:hover {
+    background-position: right;
+    color: #000;
+}
+
+.menu ul li.active {
+  border-left: 3px solid #fff;
+}
+
+.left-posts li {
+  height: 30px;
+  font-size: 16px;
+}
+
+.content {
+  padding-left: 8px;
+  width: 100%;
 }

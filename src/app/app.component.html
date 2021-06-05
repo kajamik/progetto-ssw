@@ -1,4 +1,20 @@
-<hello name="{{ name }}"></hello>
-<p>
-  Start editing to see some magic happen :)
-</p>
+<div class="master">
+  <div class="menu" *ngIf="key">
+    <div class="base"></div>
+    <div class="menu_items">
+      <ul class="left-posts">
+        <li>&#x26b7; {{ key }}</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="content">
+    <post-root [posts]="posts" [key]="key" *ngIf="key else inizia"></post-root>
+    <ng-template #inizia>
+     <h3 style="color:#fff">Sei già in possesso di una chiave?</h3>
+     <input #key type="text" value="" placeholder="Inserisci la chiave">
+     <button type="button" (click)="inviaChiave(key.value)">Invia chiave</button>
+     <button type="button" (click)="inviaChiave(null)">Richiedi chiave</button>
+    </ng-template>
+  </div>
+</div>
