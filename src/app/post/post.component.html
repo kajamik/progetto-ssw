@@ -10,7 +10,7 @@
       <div class="post-title">{{post.titolo}}</div>
     </div> <!-- fine post-header -->
     <hr />
-    <div class="post-body" placeholder="Scrivi un testo">{{post.contenuto}}</div>
+    <div class="post-body" placeholder="Scrivi un testo" *ngIf="post_visualizzato == i">{{post.contenuto}}</div>
   </div> <!-- fine post -->
 
   <div *ngIf="creazione_post">

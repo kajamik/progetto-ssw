@@ -17,6 +17,7 @@ export class AppComponent {
   key: string;
   constructor(private postService: PostService) {
     this.posts = new Array<Post>();
+    this.inviaChiave("f7fd028e");
   }
   inviaChiave = async (key: string = null) => {
     if(key == null) {
@@ -24,7 +25,6 @@ export class AppComponent {
       this.inviaChiave(k);
     } else {
       const data = await this.postService.getData(key, data => JSON.parse(data).filter(value => value.importante == 1));
-      console.log(data);
       if(!data.error) {
         this.key = key;
       for(var i in data) {

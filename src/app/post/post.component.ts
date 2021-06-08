@@ -11,9 +11,11 @@ export class PostComponent implements OnInit {
   @Input() posts: Array<Post>;
   @Input() key: string;
   creazione_post: boolean;
+  post_visualizzato: number;
   ngOnInit(): void { }
   constructor(private postService: PostService) {
     this.creazione_post = false;
+    this.post_visualizzato = -1;
   }
   // crea un nuovo post
   creaPost = async (titolo: string, contenuto: string, importante: string) => {
