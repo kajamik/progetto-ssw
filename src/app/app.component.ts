@@ -27,8 +27,15 @@ export class AppComponent {
       });
     } else {
       this.postService.getData(key, data => {
+        this.key = key;
         var obj = JSON.parse(data);
-        alert(obj);
+        for(var item of obj) {
+          let post = new Post();
+          post.importante = item.importante;
+          post.titolo = item.titolo;
+          post.contenuto = item.contenuto;
+          this.posts.push(post);
+        }
       })
     }
   }
