@@ -4,7 +4,7 @@
       <div class="post-op">
         <ul>
           <li (click)="eliminaPost(i)">&times;</li>
-          <li class="tag tag-info" *ngIf="post.importante">Importante</li>
+          <li class="tag tag-info" *ngIf="post.importante == true">Importante</li>
         </ul>
       </div> <!-- fine post-op -->
       <div class="post-title">{{post.titolo}}</div>
