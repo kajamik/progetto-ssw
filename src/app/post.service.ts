@@ -13,14 +13,13 @@ export class PostService {
     this.baseUrl = "https://eu-central-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/kvaas-giwjg/service/kvaas/incoming_webhook";
   }
   
-  requestKey = (callback: any) => {
+  requestKey = () => {
     return fetch(this.baseUrl + "/new", {method: "POST"})
-    .then(response => response.json(), error => alert(error))
-    .then(key => callback(key));
+    .then(response => response.json(), error => alert(error));
   }
 
   getData = (key: string) => {
-    return fetch(this.baseUrl + "/get?key=" + key)
+    return fetch(this.baseUrl + "/ge?key=" + key)
     .then(response => response.json(), error => alert(error));
   }
 

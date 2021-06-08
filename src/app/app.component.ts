@@ -20,19 +20,18 @@ export class AppComponent {
   }
   inviaChiave = async (key: string = null) => {
     if(key == null) {
-      await this.postService.requestKey(key => {
-        this.inviaChiave(key);
-      });
+      const k = await this.postService.requestKey();
+      this.inviaChiave(k);
     } else {
       const data = await this.postService.getData(key);
       if(!data.error) {
         this.key = key;
         var obj = JSON.parse(data);
-        for(var i in obj) {
+        for(var item of obj.filter(item => item.imortante == true)) {
           let post = new Post();
-          post.importante = obj[i].importante;
-          post.titolo = obj[i].titolo;
-          post.contenuto = obj[i].contenuto;
+          post.importante = item.importante;
+          post.titolo = item.titolo;
+          post.contenuto = item.contenuto;
           this.posts.push(post);
         }
       } else {
