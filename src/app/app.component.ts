@@ -17,13 +17,11 @@ export class AppComponent {
   key: string;
   constructor(private postService: PostService) {
     this.posts = new Array<Post>();
-    //test
-    this.inviaChiave("74950381");
   }
   inviaChiave = (key: string = null) => {
     if(key == null) {
-      this.postService.requestKey().then(data => {
-        
+      this.postService.requestKey(key => {
+        this.inviaChiave(key);
       });
     } else {
       this.postService.getData(key, data => {
