@@ -6,10 +6,9 @@ export class Post implements IPost {
   importante: boolean;
   titolo: string;
   contenuto: string;
-  //background: string;
 }
 @Component({
-  selector: 'app-root',
+  selector: 'my-app',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
@@ -19,21 +18,18 @@ export class AppComponent {
   constructor(private postService: PostService) {
     this.posts = new Array<Post>();
     //test
-    this.inviaChiave("ij9n4x");
+    this.inviaChiave("74950381");
   }
   inviaChiave = (key: string = null) => {
-    this.postService.request(key).then(data => {
-      this.key = this.postService.getKey();
-      if(data.length > 0) {
-        for(var x of data) {
-          var post = new Post();
-          post.importante = x.importante;
-          post.titolo = x.titolo;
-          post.contenuto = x.contenuto;
-          this.posts.push(post);
-        }
-      }
-    })
-    .catch(keyNotFound => alert("La chiave non esiste"));
+    if(key == null) {
+      this.postService.requestKey().then(data => {
+        
+      });
+    } else {
+      this.postService.getData(key, data => {
+        var obj = JSON.parse(data);
+        alert(obj);
+      })
+    }
   }
 }

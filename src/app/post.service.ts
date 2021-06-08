@@ -7,38 +7,27 @@ import { IPost } from './interfaces/post';
 })
 export class PostService {
 
-  key: string;
   baseUrl: string;
 
   constructor() {
-    this.baseUrl = "https://eu-central-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/progetto-yffrz/service/progetto/incoming_webhook";
-  }
-
-  getKey = () => this.key;
-
-  request = (key: string = null) => {
-    if(key == null) {
-      return this.requestKey();
-    } else {
-      this.key = key;
-      return this.getData(key);
-    }
+    this.baseUrl = "https://eu-central-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/kvaas-giwjg/service/kvaas/incoming_webhook";
   }
   
-  private requestKey = () => {
+  requestKey = () => {
     const f = fetch(this.baseUrl + "/new", {method: "POST"})
     .then(response => response.json(), error => alert(error))
     .then(key => {
-      this.key = key;
+      alert(key);
       return fetch(this.baseUrl + "/get?key=" + key, {method: "GET"})
       .then(response => response.json(), error => alert(error));
     });
     return f;
   }
 
-  private getData = async (key: string) => {
-    const r = await fetch(this.baseUrl + "/get?key=" + key, {method: "GET"});
-    return r.json();
+  getData = (key: string, callback: any) => {
+    return fetch(this.baseUrl + "/get?key=" + key, {method: "GET"})
+    .then(response => response.json(), error => alert(error))
+    .then(data => callback(data));
   }
 
   sendData = async (key: string, msg: {}) => {
