@@ -1,42 +1,44 @@
 <div class="post-master">
- <div *ngFor="let post of posts; index as i" class="post" style="background-color:#fff">
-  <div class="post-header">
-   <div class="post-op">
-   <ul>
-    <li (click)="eliminaPost(i)">&times;</li>
-    <li class="tag tag-info" *ngIf="post.importante">Importante</li>
-   </ul>
-  </div> <!-- fine post-op -->
-  <div class="post-title">{{post.titolo}}</div>
- </div> <!-- fine post-header -->
- <hr/>
- <div class="post-body" placeholder="Scrivi un testo">{{post.contenuto}}</div>
- </div> <!-- fine post -->
-
-<div *ngIf="creazione_post">
-   <div class="modal post" style="background-color:#fff">
+  <div *ngFor="let post of posts; index as i" class="post" style="background-color:#fff">
     <div class="post-header">
-     <div class="post-op">
-       <ul>
-         <li id="check" (click)="creaPost(titolo.textContent, contenuto.textContent, importante.value)">&#10003;</li>
-         <li id="times" (click)="creazione_post = false;">&times;</li>
-         <li><div class="post-radio">
-           importante?
-           <select #importante>
-             <option value="1" selected>Sì</option>
-             <option value="0">No</option>
-           </select>
-         </div></li>
-       </ul>
-    </div> <!-- fine post-op -->
-    <div #titolo class="post-title" contenteditable="true" placeholder="Scrivi il titolo..."></div>
-   </div> <!-- fine post-header -->
-   <hr/>
-   <div #contenuto class="post-body" contenteditable="true" placeholder="Scrivi il testo..."></div>
-   </div> <!-- fine post -->
-</div>
+      <div class="post-op">
+        <ul>
+          <li (click)="eliminaPost(i)">&times;</li>
+          <li class="tag tag-info" *ngIf="post.importante">Importante</li>
+        </ul>
+      </div> <!-- fine post-op -->
+      <div class="post-title">{{post.titolo}}</div>
+    </div> <!-- fine post-header -->
+    <hr />
+    <div class="post-body" placeholder="Scrivi un testo">{{post.contenuto}}</div>
+  </div> <!-- fine post -->
 
-<div class="new_post" style="background-color:#202532">
-  <div class="post-body" (click)="(!creazione_post) ? creazione_post = true : '';">+ Aggiungi Postit</div>
-</div> <!-- fine new_post -->
+  <div *ngIf="creazione_post">
+    <div class="modal post" style="background-color:#fff">
+      <div class="post-header">
+        <div class="post-op">
+          <ul>
+            <li id="check" (click)="creaPost(titolo.textContent, contenuto.textContent, importante.value)">&#10003;</li>
+            <li id="times" (click)="creazione_post = false;">&times;</li>
+            <li>
+              <div class="post-radio">
+                importante?
+                <select #importante>
+             <option value="true" selected>Sì</option>
+             <option value="false">No</option>
+           </select>
+              </div>
+            </li>
+          </ul>
+        </div> <!-- fine post-op -->
+        <div #titolo class="post-title" contenteditable="true" placeholder="Scrivi il titolo..."></div>
+      </div> <!-- fine post-header -->
+      <hr />
+      <div #contenuto class="post-body" contenteditable="true" placeholder="Scrivi il testo..."></div>
+    </div> <!-- fine post -->
+  </div>
+
+  <div class="new_post" style="background-color:#202532">
+    <div class="post-body" (click)="(!creazione_post) ? creazione_post = true : '';">+ Aggiungi Postit</div>
+  </div> <!-- fine new_post -->
 </div>

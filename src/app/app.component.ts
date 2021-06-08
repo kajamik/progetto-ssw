@@ -23,15 +23,15 @@ export class AppComponent {
       const k = await this.postService.requestKey();
       this.inviaChiave(k);
     } else {
-      const data = await this.postService.getData(key);
+      const data = await this.postService.getData(key, data => data);
       if(!data.error) {
         this.key = key;
         var obj = JSON.parse(data);
-        for(var item of obj.filter(item => item.imortante == true)) {
+      for(var i in obj) {
           let post = new Post();
-          post.importante = item.importante;
-          post.titolo = item.titolo;
-          post.contenuto = item.contenuto;
+          post.importante = obj[i].importante;
+          post.titolo = obj[i].titolo;
+          post.contenuto = obj[i].contenuto;
           this.posts.push(post);
         }
       } else {

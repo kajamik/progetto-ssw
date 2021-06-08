@@ -19,7 +19,7 @@ export class PostComponent implements OnInit {
   creaPost = async (titolo, contenuto, importante) => {
     if(titolo.trim().length !== 0 && contenuto.trim().length !== 0) {
       var post = new Post();
-      post.importante = importante ? true : false;
+      post.importante = importante;
       post.titolo = titolo;
       post.contenuto = contenuto;
       this.posts.push(post);

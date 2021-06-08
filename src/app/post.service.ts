@@ -18,9 +18,10 @@ export class PostService {
     .then(response => response.json(), error => alert(error));
   }
 
-  getData = (key: string) => {
-    return fetch(this.baseUrl + "/ge?key=" + key)
-    .then(response => response.json(), error => alert(error));
+  getData = (key: string, callback: any) => {
+    return fetch(this.baseUrl + "/get?key=" + key)
+    .then(response => response.json(), error => alert(error))
+    .then(data => callback(data));
   }
 
   sendData = (key: string, msg: {}) => {
