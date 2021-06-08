@@ -24,9 +24,8 @@ export class PostService {
     .then(response => response.json(), error => alert(error));
   }
 
-  sendData = async (key: string, msg: {}, callback: any = null) => {
+  sendData = (key: string, msg: {}) => {
    return fetch(this.baseUrl + "/post?key=" + key + "&msg=" + JSON.stringify(msg), {method: "POST"})
-   .then(response => response.json(), error => alert(error))
-   .then(data => callback(data));
+   .then(response => response.json(), error => alert(error));
   }
 }

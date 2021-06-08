@@ -29,8 +29,8 @@ export class PostComponent implements OnInit {
       alert("Non puoi creare un post vuoto");
     }
   }
-  eliminaPost = async (id: number) => {
+  eliminaPost = (id: number) => {
     this.posts.splice(id, 1);
-    await this.postService.sendData(this.key, this.posts);
+    this.postService.sendData(this.key, this.posts);
   }
 }
