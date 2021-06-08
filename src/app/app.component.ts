@@ -18,20 +18,20 @@ export class AppComponent {
   constructor(private postService: PostService) {
     this.posts = new Array<Post>();
   }
-  inviaChiave = (key: string = null) => {
+  inviaChiave = async (key: string = null) => {
     if(key == null) {
-      this.postService.requestKey(key => {
+      await this.postService.requestKey(key => {
         this.inviaChiave(key);
       });
     } else {
-      this.postService.getData(key, data => {
+      await this.postService.getData(key, data => {
         this.key = key;
         var obj = JSON.parse(data);
-        for(var item of obj) {
+        for(var i in obj) {
           let post = new Post();
-          post.importante = item.importante;
-          post.titolo = item.titolo;
-          post.contenuto = item.contenuto;
+          post.importante = obj[i].importante;
+          post.titolo = obj[i].titolo;
+          post.contenuto = obj[i].contenuto;
           this.posts.push(post);
         }
       })

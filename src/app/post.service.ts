@@ -14,14 +14,13 @@ export class PostService {
   }
   
   requestKey = (callback: any) => {
-    const f = fetch(this.baseUrl + "/new", {method: "POST"})
+    return fetch(this.baseUrl + "/new", {method: "POST"})
     .then(response => response.json(), error => alert(error))
     .then(key => callback(key));
-    return f;
   }
 
   getData = (key: string, callback: any) => {
-    return fetch(this.baseUrl + "/get?key=" + key, {method: "GET"})
+    return fetch(this.baseUrl + "/get?key=" + key)
     .then(response => response.json(), error => alert(error))
     .then(data => callback(data));
   }
