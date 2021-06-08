@@ -3,9 +3,9 @@ import { IPost } from './interfaces/post';
 import { PostService } from './post.service';
 
 export class Post implements IPost {
-  importante: boolean;
   titolo: string;
   contenuto: string;
+  importante: number;
 }
 @Component({
   selector: 'my-app',
@@ -23,15 +23,15 @@ export class AppComponent {
       const k = await this.postService.requestKey();
       this.inviaChiave(k);
     } else {
-      const data = await this.postService.getData(key, data => data);
+      const data = await this.postService.getData(key, data => JSON.parse(data).filter(value => value.importante == 1));
+      console.log(data);
       if(!data.error) {
         this.key = key;
-        var obj = JSON.parse(data);
-      for(var i in obj) {
+      for(var i in data) {
           let post = new Post();
-          post.importante = obj[i].importante;
-          post.titolo = obj[i].titolo;
-          post.contenuto = obj[i].contenuto;
+          post.importante = data[i].importante;
+          post.titolo = data[i].titolo;
+          post.contenuto = data[i].contenuto;
           this.posts.push(post);
         }
       } else {

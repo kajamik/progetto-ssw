@@ -16,10 +16,10 @@ export class PostComponent implements OnInit {
     this.creazione_post = false;
   }
   // crea un nuovo post
-  creaPost = async (titolo, contenuto, importante) => {
+  creaPost = async (titolo: string, contenuto: string, importante: string) => {
     if(titolo.trim().length !== 0 && contenuto.trim().length !== 0) {
       var post = new Post();
-      post.importante = importante;
+      post.importante = Number(importante);
       post.titolo = titolo;
       post.contenuto = contenuto;
       this.posts.push(post);
