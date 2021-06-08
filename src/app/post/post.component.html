@@ -1,6 +1,6 @@
 <div class="post-master">
   <div *ngFor="let post of posts; index as i" class="post" style="background-color:#fff">
-    <div class="post-header">
+    <div class="post-header" (click)="visualizzaPost(i)">
       <div class="post-op">
         <ul>
           <li (click)="eliminaPost(i)">&times;</li>

@@ -35,4 +35,11 @@ export class PostComponent implements OnInit {
     this.posts.splice(id, 1);
     this.postService.sendData(this.key, this.posts);
   }
+  visualizzaPost = (id: number) => {
+    if(this.post_visualizzato == -1) {
+      this.post_visualizzato = id;
+    } else {
+      this.post_visualizzato = -1;
+    }
+  }
 }
