@@ -19,10 +19,9 @@ export class PostService {
     .then(key => callback(key));
   }
 
-  getData = (key: string, callback: any) => {
+  getData = (key: string) => {
     return fetch(this.baseUrl + "/get?key=" + key)
-    .then(response => response.json(), error => alert(error))
-    .then(data => callback(data));
+    .then(response => response.json(), error => alert(error));
   }
 
   sendData = async (key: string, msg: {}, callback: any = null) => {

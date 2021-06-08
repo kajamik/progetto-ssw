@@ -24,7 +24,8 @@ export class AppComponent {
         this.inviaChiave(key);
       });
     } else {
-      await this.postService.getData(key, data => {
+      const data = await this.postService.getData(key);
+      if(!data.error) {
         this.key = key;
         var obj = JSON.parse(data);
         for(var i in obj) {
@@ -34,7 +35,9 @@ export class AppComponent {
           post.contenuto = obj[i].contenuto;
           this.posts.push(post);
         }
-      })
+      } else {
+        alert("Chiave non valida");
+      }
     }
   }
 }
