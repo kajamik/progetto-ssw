@@ -16,21 +16,21 @@ export class PostComponent implements OnInit {
     this.creazione_post = false;
   }
   // crea un nuovo post
-  creaPost = (titolo, contenuto, importante) => {
+  creaPost = async (titolo, contenuto, importante) => {
     if(titolo.trim().length !== 0 && contenuto.trim().length !== 0) {
       var post = new Post();
       post.importante = importante ? true : false;
       post.titolo = titolo;
       post.contenuto = contenuto;
       this.posts.push(post);
-      this.postService.sendData(this.key, this.posts);
+      await this.postService.sendData(this.key, this.posts);
       this.creazione_post = false;
     } else {
       alert("Non puoi creare un post vuoto");
     }
   }
-  eliminaPost = (id: number) => {
+  eliminaPost = async (id: number) => {
     this.posts.splice(id, 1);
-    this.postService.sendData(this.key, this.posts);
+    await this.postService.sendData(this.key, this.posts);
   }
 }
