@@ -18,8 +18,6 @@ Inizialmente, quando la variabile 'key' non è ancora stata inizializzata, all'u
 post.component.ts è il file che viene avviato quando la key è stata inizializzata, è composto di:
 
 - decorazioni @Input() che servono per recuperare i valori dal componente padre (app.component.ts), valori passati attraverso la View.
-- creazione_post e post_visualizzato che sono due variabili che mi consentono di effettuare delle operazioni sul lato della View, ma che non non sono necessarie al funzionamento dell'applicazione.
-- visualizzaPost(): funzione non necessaria al funzionamento dell'applicazione.
 - creaPost(titolo: string, contenuto: string, importante: string): funzione che crea un nuovo oggetto e lo inserisce all'interno dell'array posts, chiamando il servizio post.service.ts effettua un'operazione sul Model.
 - eliminaPost(id: number): funzione che elimina l'oggetto contenuto all'interno di posts in id posizione e, chiamando il servizio post.service.ts effettua un'operazione sul Model.
 
