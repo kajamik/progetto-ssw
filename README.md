@@ -1,6 +1,6 @@
 # Progetto: Sviluppo di Servizi Web
 ## Autore: Pietro Paolo Carpentras
-### ultima release: 9/06/2021
+### ultimo aggiornamento: 9/06/2021
 [Personal Web Site](https://www.paolocarpentras.it)
 
 Chiave di prova: f7fd028e
