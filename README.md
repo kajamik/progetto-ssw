@@ -1,4 +1,4 @@
-# Progetto: Sviluppo di Servizi Web
+# Progetto per l'esame di Sviluppo di Servizi Web
 ## Autore: Pietro Paolo Carpentras
 ### ultimo aggiornamento: 9/06/2021
 [Personal Web Site](https://www.paolocarpentras.it)
