@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable, interval } from 'rxjs';
-import { IPost } from './interfaces/post';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +9,6 @@ export class PostService {
 
   constructor() {
     this.baseUrl = "https://eu-central-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/kvaas-giwjg/service/kvaas/incoming_webhook";
-    // key: f7fd028e
   }
   
   requestKey = () => {
