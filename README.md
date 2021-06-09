@@ -1,3 +1,7 @@
+# Progetto: Sviluppo di Servizi Web
+## Autore: Pietro Paolo Carpentras
+### ultima release: 9/06/2021
+
 Chiave di prova: f7fd028e
 
 L'applicazione composto di due componenti, App e Post, un service, Post, e un'interfaccia Post.
