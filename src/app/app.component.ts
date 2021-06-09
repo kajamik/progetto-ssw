@@ -17,7 +17,6 @@ export class AppComponent {
   key: string;
   constructor(private postService: PostService) {
     this.posts = new Array<Post>();
-    this.inviaChiave("f7fd028e");
   }
   inviaChiave = async (key: string = null) => {
     if(key == null) {
