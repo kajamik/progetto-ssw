@@ -23,15 +23,18 @@ export class AppComponent {
       const k = await this.postService.requestKey();
       this.inviaChiave(k);
     } else {
-      const data = await this.postService.getData(key, data => JSON.parse(data).filter(value => value.importante == 1));
-      if(!data.error) {
+      const datas = await this.postService.getData(key, data => JSON.parse(data));
+      if(!datas.error) {
         this.key = key;
-      for(var i in data) {
-          let post = new Post();
-          post.importante = data[i].importante;
-          post.titolo = data[i].titolo;
-          post.contenuto = data[i].contenuto;
-          this.posts.push(post);
+        if(Object.keys(datas).length > 0) {
+          let data = datas.filter(item => item.importante == 1);
+          for(var item of data) {
+            let post = new Post();
+            post.importante = item.importante;
+            post.titolo = item.titolo;
+            post.contenuto = item.contenuto;
+            this.posts.push(post);
+          }
         }
       } else {
         alert("Chiave non valida");
