@@ -23,7 +23,7 @@ export class PostService {
   }
 
   sendData = (key: string, msg: {}) => {
-   return fetch(this.baseUrl + "/post?key=" + key + "&msg=" + JSON.stringify(msg), {method: "POST"})
+   return fetch(this.baseUrl + "/post?key=" + key + "&msg=" + JSON.stringify(msg))
    .then(response => response.json(), error => alert(error));
   }
 }
